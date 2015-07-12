@@ -80,7 +80,7 @@ So lets look at the main check, it is this line:
 > if ( (unsigned __int8)*(&v9 + v4) - (unsigned __int8)*(&v8 + v4) != *(&v11 + v4) )
 >```
 
-Looking at this in gdb we see that it takes the _i+1_th character of our input and substracts the _i_th character, this must then be equal to these values:
+Looking at this in gdb we see that it takes the _i+1_ th character of our input and substracts the _i_ th character, this must then be equal to these values:
 
 >```bash
 >0x804888d:	cmp    edx,DWORD PTR [ebp+eax*4-0x4c]
