@@ -6,7 +6,7 @@
 |:---------------|:--------------|:----------|-------:|
 | polictf | John the Packer | Reversing |    350 |
 
->**John's greatest skill is to pack everything and everywhere with everyone. He doesn't want that someone reverse his super secret program. So he wrote a magic packing system. Can you show to John that his packing system is not a good anti->reversing solution? N.B. Unfortunately John The Packer has multiple solution, so if you have a solution that is not accepted by the scoreboard (but is accepted by the binary) please contact an OP on IRC**
+>*John's greatest skill is to pack everything and everywhere with everyone. He doesn't want that someone reverse his super secret program. So he wrote a magic packing system. Can you show to John that his packing system is not a good anti->reversing solution? N.B. Unfortunately John The Packer has multiple solution, so if you have a solution that is not accepted by the scoreboard (but is accepted by the binary) please contact an OP on IRC*
 
 ----------
 
@@ -48,7 +48,7 @@ So to get the unpacked binary we just NOP out the repack instruction at 080485D3
 
 Now that we have an unpacked readable binary we can see that the flag is checked in 3 parts. At sub_8048A42, sub_80489A9 and sub_804890B.
 
-## sub_8048A42
+### sub_8048A42
 
 Here we have:
 
@@ -61,7 +61,7 @@ Here we have:
 
 To get the first part of the flag we can place a breakpoint at 08048A84 and see our input (in EBX) being compared to flagletters (in EAX), this gives us the first part of the flag: flag{packer...}
 
-## sub_80489A9
+### sub_80489A9
 
 The second part of the flag is checked here:
 
@@ -74,7 +74,7 @@ The second part of the flag is checked here:
 
 Now here we can see the same pattern, we need EAX to be 1 to pass the check. Now here the value in EAX comes from sub_08048813, which takes the next input character and does some strange floating-point magic on it. I solved this part by placing a breakpoint on 08048A06 and just try different characters until EAX == 1, this worked untill: flag{packer-15-4-?41=-}
 
-## sub_804890B
+### sub_804890B
 
 The last part of the check looks like this:
 
