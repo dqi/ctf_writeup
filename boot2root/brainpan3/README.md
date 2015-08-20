@@ -8,6 +8,8 @@ Nmap the VM:
 >$ nmap -sT -Pn 192.168.1.118 -p-
 >```
 
+Result:
+
 >```
 >Starting Nmap 6.40 ( http://nmap.org ) at 2015-08-13 16:40 CEST
 >Nmap scan report for 192.168.1.118
@@ -19,7 +21,7 @@ Nmap the VM:
 
 # 2. Perimeter
 
-After some tries I found there is a format string vulnerability in the acces code; sending it "%p.%p.%p." causes it to display values in memory, the access code is in the third position.
+After some tries I found there is a format string vulnerability in the access code; sending it "%p.%p.%p." causes it to display values in memory, the access code is in the third position.
 
 >```bash
 >$ nc 192.168.1.118 1337
@@ -57,7 +59,7 @@ We are presented with five different options:
 * 5 - Logout, as advertised
 
 I spent quite some time looking at the web server, which has directories /bp3_repo and /repo. But this eventually turned out to be a dead end.
-Option 4 gies us a 'shell', in which we only have the ls command available and some troll filenames. I also spent some time here trying to escape from this shell but eventually turned to the more promising option 3.
+Option 4 gives us a 'shell', in which we only have the ls command available, which reveals some troll filenames. I also spent some time here trying to escape from this shell but eventually turned to the more promising option 3.
 
 Option 3 gives us the option to change the session name, here there is again a format string vulnerability, after trying quite a few things with that I noticed that the character in the 253th position was displayed into the REPORT [x], trying a session name of "Y"*253 finally enabled reports and allowed me to continue.
 
@@ -159,7 +161,7 @@ Wise words.
 
 #6. Becoming puck
 
-There is a key in /mnt/usb, after some more enumeration we find a service running on localhost:7075, and a binary in /usr/local/bin. After analysis of the binary we discover the it is vulnerable to a race condition. It first checks if /mnt/usb/key.txt is not a symlink and then after a short delay compares it to /home/puck/key.txt
+There is a key in /mnt/usb, after some more enumeration we find a service running on localhost:7075, and a binary in /usr/local/bin. After analysis of the binary we discover it is vulnerable to a race condition. It first checks if /mnt/usb/key.txt is not a symlink and then after a short delay compares it to /home/puck/key.txt
 we can exploit this delay by quickly replacing /mnt/usb/key.txt with a symlink to /home/puck/key.txt
 
 The following python script does just that:
@@ -256,7 +258,7 @@ to gain a shell with euid root.
 
 # Game over
 
-Thanks to @superkojiman for the challenge and the sticker :)
+Thanks to [@superkojiman](https://twitter.com/superkojiman) for the challenge and the sticker :)
 
 > flag{tricksy-hobbitses-use-unix}
 
