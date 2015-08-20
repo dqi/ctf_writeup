@@ -1,4 +1,5 @@
-This is a writeup for a vulnerable virtual machine created by superkojiman ([here](https://www.vulnhub.com/entry/brainpan-3,121/)). Tempted by the promise of my very own Brainpan sticker ([here](http://blog.techorganic.com/2015/07/27/brainpan-3-hacking-challenge/)), and with some free hours to spare, I dove right into it.
+This is a writeup for a vulnerable virtual machine created by superkojiman ([here](https://www.vulnhub.com/entry/brainpan-3,121/)). Tempted by the promise of my very own Brainpan sticker ([here](http://blog.techorganic.com/2015/07/27/brainpan-3-hacking-challenge/)), and armed with some free hours to spare, I dove right into it.
+
 #1. Recon
 
 Nmap the VM:
@@ -56,9 +57,9 @@ We are presented with five different options:
 * 5 - Logout, as advertised
 
 I spent quite some time looking at the web server, which has directories /bp3_repo and /repo. But this eventually turned out to be a dead end.
-Option 4 gies us a 'shell', in which we only have the ls command available and soem troll filenames. I also spent some time here trying to escape from this shell but eventually turned to the more promising option 3.
+Option 4 gies us a 'shell', in which we only have the ls command available and some troll filenames. I also spent some time here trying to escape from this shell but eventually turned to the more promising option 3.
 
-Option 3 gives us the option to change the session name, here there is again a format string vulnerability, after trying quite a few things here I noticed that the character in the 253th position was displayed into the REPORT [x], trying a session name of "Y"*253 finally enabled reports and allowed me to continue.
+Option 3 gives us the option to change the session name, here there is again a format string vulnerability, after trying quite a few things with that I noticed that the character in the 253th position was displayed into the REPORT [x], trying a session name of "Y"*253 finally enabled reports and allowed me to continue.
 
 >```
 >ACCESS CODE: 8544
@@ -96,7 +97,7 @@ Option 3 gives us the option to change the session name, here there is again a f
 
 # 4. Gaining a shell
 
-After trying a few different reports I noticed that giving something like $(id) for a report gave a longer-than-expected output. This means there is probably some command injecion possible. (superkojiman told me this was unintended and that there is another vulnerability to find)
+After trying a few different reports I noticed that giving something like $(id) for a report gave a longer-than-expected output. This means there is probably some command injecion possible. $(/bin/bash -i >&2) spawned the first shell. (superkojiman told me this was unintended and that there is another vulnerability to find)
 
 >```
 >SELECTED: 1
@@ -187,10 +188,14 @@ The following python script does just that:
 >t.sock = s
 >t.interact()
 >
+>#cleanup
 >s.close()
 >os.remove("/mnt/usb/key.txt")
->
->Saving this script as /mnt/usb/puck.py
+>```
+
+Saving this script as /mnt/usb/puck.py
+
+>```bash
 >cd /mnt/usb
 >./puck.py
 >Authentication successful

@@ -1,3 +1,3 @@
 # ctf_writeup
 
-CTF Writeups
+Sometimes I put stuff here.
