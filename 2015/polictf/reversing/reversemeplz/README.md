@@ -71,6 +71,7 @@ After loading the binary in IDA the relavant check in pseudocode (with some anno
 >  }
 >  return 0;
 >}
+>```
 
 So I figured I'd first try to find an all lowercase flag, so that I dont have to deal with the first two if-statements. And altough the function at sub_8048519 looks very complicated, looking at the input and output of this function for lowercase letters reveals that it is just rot13.
 

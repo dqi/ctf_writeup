@@ -6,9 +6,9 @@
 |:---------------|:--------------|:----------|-------:|
 | whitehat | Re300 | Reversing |    300 |
 
->*Flag = WhiteHat{SHA1(key)}*
+>*Flag = WhiteHat{SHA1(key)}
 >
->*The key is a string that has meaning*
+>The key is a string that has meaning*
 ----------
 
 ## Write-up
