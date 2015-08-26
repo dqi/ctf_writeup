@@ -1,3 +1,3 @@
 # ctf_writeup
 
-Sometimes I put stuff here.
+Writeups on interesting things like ctf and boot2root
