@@ -102,7 +102,7 @@ When it is registered the following two code blocks are of importance:
 >        obj = new BufferedInputStream(((HttpsURLConnection) (obj1)).getInputStream());
 >```
 
-So when registered it includes the token and uuid in the headers and then makes a get request to http://<server\>/do/cmd/<command>, to get the output of a command
+So when registered it includes the token and uuid in the headers and then makes a get request to http://*server*/do/cmd/*command*, to get the output of a command
 
 We can recreate this process in Burp by crafting the right packets:
 
@@ -433,7 +433,7 @@ There is another suid binary in the same location as the previous ones, we can u
 >restore: ELF 64-bit LSB  executable, x86-64, version 1 (GNU/Linux), statically linked, for GNU/Linux 2.6.32, BuildID[sha1]=f8c768078fb1214a9777e6a6a50fef30061716d7, not stripped
 >```
 
-Run the binary, the call to <gets\> jumps out as vulnerable:
+Run the binary, the call to *gets* jumps out as vulnerable:
 
 >```asm
 >gdb-peda$ pdisass get_out_path
