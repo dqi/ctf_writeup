@@ -14,7 +14,8 @@ Since it says in the description the challenge resides on a http server we can s
 
 The cookie appears to tell us where to look next...
 
->```$ curl -I http://192.168.1.111/v/81JHPbvyEQ8729161jd6aKQ0N4/
+>```
+>$ curl -I http://192.168.1.111/v/81JHPbvyEQ8729161jd6aKQ0N4/
 >HTTP/1.1 403 Forbidden
 >Date: Wed, 09 Sep 2015 11:56:57 GMT
 >Server: Apache
