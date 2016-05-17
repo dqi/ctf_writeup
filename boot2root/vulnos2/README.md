@@ -2,36 +2,38 @@ This is another writeup for a VM from Vulnhub, this one is by c4b3rw0lf.
 
 Lets scan it:
 
-_ nmap -sS -T4 -A 192.168.0.100 -p-
-
-Starting Nmap 7.12 ( https://nmap.org ) at 2016-05-17 08:49 CEST
-Nmap scan report for 192.168.0.100
-Host is up (0.00064s latency).
-Not shown: 65532 closed ports
-PORT     STATE SERVICE VERSION
-22/tcp   open  ssh     OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.6 (Ubuntu Linux; protocol 2.0)
-| ssh-hostkey:
-|   1024 f5:4d:c8:e7:8b:c1:b2:11:95:24:fd:0e:4c:3c:3b:3b (DSA)
-|   2048 ff:19:33:7a:c1:ee:b5:d0:dc:66:51:da:f0:6e:fc:48 (RSA)
-|_  256 ae:d7:6f:cc:ed:4a:82:8b:e8:66:a5:11:7a:11:5f:86 (ECDSA)
-80/tcp   open  http    Apache httpd 2.4.7 ((Ubuntu))
-|_http-server-header: Apache/2.4.7 (Ubuntu)
-|_http-title: VulnOSv2
-6667/tcp open  irc     ngircd
-MAC Address: 08:00:27:A1:E2:43 (Oracle VirtualBox virtual NIC)
-Device type: general purpose
-Running: Linux 3.X|4.X
-OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
-OS details: Linux 3.2 - 4.4
-Network Distance: 1 hop
-Service Info: Host: irc.example.net; OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-TRACEROUTE
-HOP RTT     ADDRESS
-1   0.64 ms 192.168.0.100
-
-OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 80.84 seconds
+>```
+>_ nmap -sS -T4 -A 192.168.0.100 -p-
+>
+>Starting Nmap 7.12 ( https://nmap.org ) at 2016-05-17 08:49 CEST
+>Nmap scan report for 192.168.0.100
+>Host is up (0.00064s latency).
+>Not shown: 65532 closed ports
+>PORT     STATE SERVICE VERSION
+>22/tcp   open  ssh     OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.6 (Ubuntu Linux; protocol 2.0)
+>| ssh-hostkey:
+>|   1024 f5:4d:c8:e7:8b:c1:b2:11:95:24:fd:0e:4c:3c:3b:3b (DSA)
+>|   2048 ff:19:33:7a:c1:ee:b5:d0:dc:66:51:da:f0:6e:fc:48 (RSA)
+>|_  256 ae:d7:6f:cc:ed:4a:82:8b:e8:66:a5:11:7a:11:5f:86 (ECDSA)
+>80/tcp   open  http    Apache httpd 2.4.7 ((Ubuntu))
+>|_http-server-header: Apache/2.4.7 (Ubuntu)
+>|_http-title: VulnOSv2
+>6667/tcp open  irc     ngircd
+>MAC Address: 08:00:27:A1:E2:43 (Oracle VirtualBox virtual NIC)
+>Device type: general purpose
+>Running: Linux 3.X|4.X
+>OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+>OS details: Linux 3.2 - 4.4
+>Network Distance: 1 hop
+>Service Info: Host: irc.example.net; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+>>
+>TRACEROUTE
+>HOP RTT     ADDRESS
+>1   0.64 ms 192.168.0.100
+>
+>OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+>Nmap done: 1 IP address (1 host up) scanned in 80.84 seconds
+>```
 
 So there is ssh, a webserver and a IRC server.
 
