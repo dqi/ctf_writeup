@@ -58,19 +58,20 @@ We also know *p* and *q* are *small* primes.
 
 And we also have some known plaintext to use.
 
-These facts combined allow us to, for some starting keylength pick some *p*,*q*
-and generate the key for the which would encrypt 'S' to the seven encrypted
+These facts combined allow us to, for some starting keylength, pick some *p*,*q*
+pair and generate the key which would encrypt 'S' to the seven encrypted
 occurences of 'S' in the ciphertext.  If there is a valid key (i.e indices of
-this key have no conflicting solutions) we can then validate this key
-for the encrypted 'h' in the ciphertext. This way we keep validating the key
-until we either reach the '{' in the know plaintext or the key becomes invalid. In which
+this key have no conflicting solutions) we can then validate this key for the
+encrypted 'h' in the ciphertext. This way we keep validating the key until we
+either reach the '{' in the know plaintext or the key becomes invalid. In which
 case we go on to the next *p*,*q* pair.
 
 The nice thing of this algorithm is that the keylength does not influence the
 runtime of one loop though all the *p*,*q*.
 
-This algorithm finds a key, p, q which work for the 'SharifCTF{' part of the key,
-and then uses it to bruteforce the flag char-by-char:
+This algorithm finds a *p*, *q* and a key which work for the 'SharifCTF{' part
+of the plaintext, and then uses it to bruteforce the remaining plaintext
+char-by-char:
 
 ### Solution
 
