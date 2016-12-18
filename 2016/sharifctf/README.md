@@ -40,8 +40,8 @@ encrypted data.
 ### The idea
 
 Looking at the script we see that first the flag is being copied *r* times.
-Since in this CTF the flags so far have been 43 bytes ('SharifCTF{' + [0-9a-f]{32}
-+ '}') this means *r* is equal to 301/43 = 7.
+Since in this CTF the flags so far have been 43 bytes ('SharifCTF{' + [0-9a-f]{32} +
+'}') this means *r* is equal to 301/43 = 7.
 
 Analyzing the code we see any byte in the plaintext comes from the following three results:
 
@@ -51,8 +51,8 @@ Analyzing the code we see any byte in the plaintext comes from the following thr
 >x3 = key[r*i % len(key)]
 >```
 
-Since we know the position we know *i*, meaning `<x1>` is only based on *p*,
-`<x2>` is only based on *q* and `<x3>` is only based on the key.
+Since we know the position we know *i*, meaning `x1` is only based on *p*,
+`x2` is only based on *q* and `x3` is only based on the key.
 
 We also know *p* and *q* are *small* primes.
 
