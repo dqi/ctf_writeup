@@ -95,3 +95,10 @@ print s.recvuntil(': ')
 s.sendline(num2str(sig).encode('hex'))
 print s.recvall(timeout=2)
 ```
+
+## Flag
+
+The flag is:
+```
+flag{8f898e19de410591acbcdbfae798d603}
+```
